@@ -16,7 +16,9 @@ public class Hanoi {
 		if(n > 1) {
 			move(n-1, x, 6-x-y);
 		}
+		
 		System.out.println("원반["+n+"]을 "+ x + "기둥에서 "+ y+ "기둥으로 옮김. ");
+		
 		if(n > 1) {
 			move(n-1, 6-x-y, y);
 		}
