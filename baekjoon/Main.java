@@ -1,30 +1,73 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.Scanner;
 
 public class Main {
-	public static void main(String[] args) throws NumberFormatException, IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	public static void main(String[] args)  {
+		Scanner sc = new Scanner(System.in);
 		
-		int num = Integer.parseInt(br.readLine());
-		String [] a = new String[num];
-		
-		for(int i =0; i < num; i++) {
-			a[i] = br.readLine();
-		}
-		
-		for(int i =0; i < num; i++) {
-			int sum= 0;
-			int count = 0;
-			for(int j = 0; j< a[i].length(); j++) {
-				if(a[i].charAt(j) == 'O') {
-					count++;
-				}else {
-					count = 0;
+		String s = sc.next();
+		sc.close();
+		int count  = 0;
+		for(int i = 0; i < s.length(); i++ ){
+			
+			char c = s.charAt(i);
+			
+			if(c == 'c') {
+				if(i < s.length()-1) {
+					if(s.charAt(i+1) == '=') {
+						i++;
+					}else if(s.charAt(i+1) == '-') {
+						i++;
+					}
 				}
-				sum += count;
 			}
-			System.out.println(sum);
+			if(c == 'd') {
+				if(i < s.length()-1) {
+					if(s.charAt(i+1) == 'z') {
+						if(i < s.length()-2) {
+							if(s.charAt(i+2) == '=') {
+								i+= 2;
+							}
+						}
+					}
+					else if(s.charAt(i+1) == '-') {
+						i++;
+					}
+				}
+			}
+			if(c == 'l') {
+				if(i < s.length()-1) {
+					if(s.charAt(i+1) == 'j') {
+						i++;
+					}
+				}
+			}
+			if(c == 'n') {
+				if(i < s.length()-1) {
+					if(s.charAt(i+1) == 'j') {
+						i++;
+					}
+				}
+			}
+			
+			if(c == 's') {
+				if(i < s.length()-1) {
+					if(s.charAt(i+1) == '=') {
+						i++;
+					}
+				}
+			}
+			if(c == 'z') {
+				if(i < s.length()-1) {
+					if(s.charAt(i+1) == '=') {
+						i++;
+					}
+				}
+			}
+			
+			
+			count +=1;
 		}
+		System.out.println(count);
+		
 	}
 }
