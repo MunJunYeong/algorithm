@@ -1,73 +1,37 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 public class Main {
-	public static void main(String[] args)  {
-		Scanner sc = new Scanner(System.in);
+	public static void main(String[] args) throws IOException    {
 		
-		String s = sc.next();
-		sc.close();
-		int count  = 0;
-		for(int i = 0; i < s.length(); i++ ){
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		int num = Integer.parseInt(br.readLine());
+		
+		String [] arr = new String[num];
+		
+		for(int i = 0; i < num; i++) {
+			arr[i] = br.readLine();
+			StringTokenizer st = new StringTokenizer(arr[i]);
+			int height = Integer.parseInt(st.nextToken());
+			int width = Integer.parseInt(st.nextToken());
+			int N = Integer.parseInt(st.nextToken());
 			
-			char c = s.charAt(i);
+			int checkW = N/height+1;
+			int checkH = N % height;
 			
-			if(c == 'c') {
-				if(i < s.length()-1) {
-					if(s.charAt(i+1) == '=') {
-						i++;
-					}else if(s.charAt(i+1) == '-') {
-						i++;
-					}
-				}
-			}
-			if(c == 'd') {
-				if(i < s.length()-1) {
-					if(s.charAt(i+1) == 'z') {
-						if(i < s.length()-2) {
-							if(s.charAt(i+2) == '=') {
-								i+= 2;
-							}
-						}
-					}
-					else if(s.charAt(i+1) == '-') {
-						i++;
-					}
-				}
-			}
-			if(c == 'l') {
-				if(i < s.length()-1) {
-					if(s.charAt(i+1) == 'j') {
-						i++;
-					}
-				}
-			}
-			if(c == 'n') {
-				if(i < s.length()-1) {
-					if(s.charAt(i+1) == 'j') {
-						i++;
-					}
-				}
-			}
-			
-			if(c == 's') {
-				if(i < s.length()-1) {
-					if(s.charAt(i+1) == '=') {
-						i++;
-					}
-				}
-			}
-			if(c == 'z') {
-				if(i < s.length()-1) {
-					if(s.charAt(i+1) == '=') {
-						i++;
-					}
-				}
+			if(N%height == 0) {
+				System.out.println((height*100)+(N/height));
+			}else {
+				System.out.println((N*height)*100 + (N/height+1));
 			}
 			
 			
-			count +=1;
+			
+			
 		}
-		System.out.println(count);
 		
 	}
 }
