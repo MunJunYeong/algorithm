@@ -1,18 +1,27 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.math.BigInteger;
-import java.util.StringTokenizer;
 
 public class Main {
 	public static void main(String[] args) throws IOException   {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		String s = br.readLine();
-		br.close();
-		StringTokenizer st = new StringTokenizer(s);
-		BigInteger a = new BigInteger(st.nextToken());
-		BigInteger b = new BigInteger(st.nextToken());
-		System.out.println(a.add(b));
+		int num = Integer.parseInt(br.readLine());
+		
+		String[] a= (br.readLine().split(" "));
+		int max = Integer.parseInt(a[0]);
+		int min = Integer.parseInt(a[0]);
+		
+		for(int i=1; i < num; i++) {
+			int temp = Integer.parseInt(a[i]);
+			if(max < temp) {
+				max = temp;
+			}
+			if(min > temp) {
+				min = temp;
+			}
+			
+		}
+		System.out.println(min + " " + max);
 		
 	}
 }
