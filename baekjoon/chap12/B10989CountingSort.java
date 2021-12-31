@@ -1,8 +1,10 @@
+package chap12;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Main {
+public class B10989CountingSort {
 	static int count =0 ;
 	static StringBuilder sb = new StringBuilder();
 	
