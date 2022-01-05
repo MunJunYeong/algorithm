@@ -8,36 +8,82 @@ public class Main {
 	
 	public static void main(String[] args) throws IOException   {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		int num = Integer.parseInt(br.readLine());
-		System.out.println(hansu(num));
+		String s= br.readLine();
+		
+		int count  = 0;
+		for(int i =0; i<s.length(); i++) {
+			
+			char ch = s.charAt(i);
+			if(i > s.length()-1) {
+				count++;
+				break;
+			}
+			if(ch == 'c') {
+				char ch2 = s.charAt(i+1);
+				if(ch2 == '=') {
+					count++;
+					i++;
+				}
+				else if(ch2 == '-') {
+					count ++;
+					i++;
+				}else {
+					count ++;
+				}
+			}else if(ch == 'd') {
+				char ch2 = s.charAt(i+1);
+				if(ch2 == 'z') {
+					char ch3 = s.charAt(i+2);
+					if(ch3 == '=') {
+						count++;
+						i+=2;
+					}
+				}else if(ch2=='-') {
+					count ++;
+					i++;
+				}else {
+					count++;
+				}
+			}else if(ch == 'l') {
+				char ch2 = s.charAt(i+1);
+				if(ch2 == 'j') {
+					count++; 
+					i++;
+				}else {
+					count++;
+				}
+			}else if(ch == 'n') {
+				char ch2 = s.charAt(i+1);
+				if(ch2 == 'j') {
+					count++; 
+					i++;
+				}else {
+					count++;
+				}
+			}else if(ch == 's') {
+				char ch2 = s.charAt(i+1);
+				if(ch2 == '=') {
+					count++; 
+					i++;
+				}else {
+					count++;
+				}
+			}else if(ch == 'z') {
+				char ch2 = s.charAt(i+1);
+				if(ch2 == '=') {
+					count++; 
+					i++;
+				}else {
+					count++;
+				}
+			}else {
+				count++;
+			}
+		}
+		System.out.println(count);
 		
 	}
 
-	static int hansu(int num) {
-		int count = 0;
-		if(num < 100) {
-			return num;
-		}else {
-			count = 99;
-			if(num == 1000) {
-				num = 999;
-			}
-			for(int i =100; i<=num; i++) {
-				int hun = i/100;
-				int ten = (i/10) % 10;
-				int one = i %10;
-				
-				if((hun-ten) == (ten - one) ) {
-					count++;
-				}
-				
-			}
-			
-		}
-		
-		return count;
-	}
-	
 	
 	
 }
