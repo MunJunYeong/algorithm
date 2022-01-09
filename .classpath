@@ -8,5 +8,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="baekjoon"/>
 	<classpathentry kind="src" path="repeat"/>
+	<classpathentry kind="src" path="codeUp"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
