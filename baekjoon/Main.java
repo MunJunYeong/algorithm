@@ -16,7 +16,7 @@ public class Main {
 			int n = Integer.parseInt(br.readLine());
 			int [][] score = new int[n][2];
 			for(int j = 0 ; j < n; j ++) {
-				StringTokenizer st = new StringTokenizer(br.readLine());
+				StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 				score[j][0] = Integer.parseInt(st.nextToken());
 				score[j][1] = Integer.parseInt(st.nextToken());
 			}
@@ -27,11 +27,19 @@ public class Main {
 					return o1[0] - o2[0];
 				}
 			});
-			int count = 0 ;
-			for(int j= n-1; j >=0; j--) {
+			
+			// [0] = 서류 점수, [1] = 면접 점수 
+			int ans = 1; //1등
+			int min = score[0][1]; // 면접 점수꼴등 
+			
+			for(int j= 1; j  < n; j++) {
+				if(score[n][1] < min) {
+					ans ++;
+					min = score[n][1];
+				}
 				
 			}
-			
+			System.out.println(ans);
 			
 			
 		}
