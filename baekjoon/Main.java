@@ -2,32 +2,45 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.StringTokenizer;
 
 public class Main {
 	
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		//300 60 10
-		int time = Integer.parseInt(br.readLine());
-		int a = 0, b = 0, c = 0;
-		int check = time%10;
-		while(time != 0) {
-			if( check != 0) {
-				System.out.println(-1);
-				System.exit(0);
+		int n = Integer.parseInt(br.readLine());
+		for(int i = 0 ; i < n ; i ++) {
+			int num = Integer.parseInt(br.readLine());
+			int [][] arr = new int[num][2];
+			for(int j = 0; j < num; j ++) {
+				StringTokenizer st = new StringTokenizer(br.readLine());
+				arr[j][0] = Integer.parseInt(st.nextToken());
+				arr[j][1] = Integer.parseInt(st.nextToken());
 			}
-			if(time >= 300) {
-				time -= 300;
-				a++;
-			}else if(time >= 60) {
-				time -= 60;
-				b++;
-			}else if(time >= 10) {
-				time -= 10;
-				c++;
+			Arrays.sort(arr, (o1, o2) -> {
+				if(o1[1] == o2[1]) {
+					return o1[0] - o2[0];
+				}else {
+					return o1[1] - o2[1];
+					
+				}
+			});
+			int res = 1;
+			int min = arr[0][1];
+			for(int j =0; j < num; j ++) {
+				System.out.println(arr[j][0] + " " +  arr[j][1]);
+				if(min > arr[j][1]) {
+					min = arr[j][1];
+					res ++;
+				}
 			}
+//			System.out.println(res);
+			
+			
 		}
-		System.out.println(a + " " + b + " " + c);
+		
+		
 	}
 }
