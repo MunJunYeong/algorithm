@@ -1,28 +1,24 @@
+package dynamic;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Main {
-	static int [] dp;
+public class b10870 {
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br =new BufferedReader(new InputStreamReader(System.in));
 		int n = Integer.parseInt(br.readLine());
-		dp = new int[1001];
-		
-		dp[1] =1;
-		dp[2] = 2;
-		dp[3] = 3;
-		dp[4] = 5;
-		System.out.println(tile(n));
+		System.out.println(fibo(n));
 		
 	}
-	private static int tile(int n) {
-		if(dp[n] == 0) {
-			dp[n] = tile(n-1) + tile(n-2);
+
+	private static int fibo(int n) {
+		if(n == 0) {
+			return 0;
 		}
-		return dp[n];
+		if(n == 1) {
+			return 1;
+		}
+		return fibo(n-1) + fibo(n-2);
 	}
-
-	
 }
-

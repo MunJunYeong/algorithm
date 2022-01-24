@@ -1,28 +1,26 @@
+package dynamic;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Main {
-	static int [] dp;
+public class b9095 {
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br =new BufferedReader(new InputStreamReader(System.in));
 		int n = Integer.parseInt(br.readLine());
-		dp = new int[1001];
 		
-		dp[1] =1;
+		int [] dp = new int[11];
+		dp[0] = 0;
+		dp[1] = 1;
 		dp[2] = 2;
-		dp[3] = 3;
-		dp[4] = 5;
-		System.out.println(tile(n));
-		
-	}
-	private static int tile(int n) {
-		if(dp[n] == 0) {
-			dp[n] = tile(n-1) + tile(n-2);
+		dp[3] = 4;
+		for(int j = 4; j <=10; j++) {
+			dp[j] = dp[j-1] + dp[j-2] + dp[j-3];
 		}
-		return dp[n];
+		
+		for(int i = 0; i < n; i++) {
+			int temp = Integer.parseInt(br.readLine());
+			System.out.println(dp[temp]);
+		}
 	}
-
-	
 }
-
