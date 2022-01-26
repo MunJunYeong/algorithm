@@ -1,10 +1,12 @@
+package stack;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Stack;
 import java.util.StringTokenizer;
 
-public class Main {
+public class b17298 {
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br =new BufferedReader(new InputStreamReader(System.in));
 		int n = Integer.parseInt(br.readLine());
@@ -14,27 +16,24 @@ public class Main {
 		for(int i = 0; i < n; i++) {
 			arr[i] = Integer.parseInt(st.nextToken());
 		}
+		StringBuilder sb = new StringBuilder();
 		
-		for(int i=n-1; i >=0;i--) {
+		for(int i =0; i<n; i++) {
 			
-			while( !stack.empty() && arr[stack.peek()] < arr[i]) {
-				arr[stack.pop()] = i+1;
+			while(!stack.isEmpty() && arr[stack.peek()] < arr[i] ) {
+				arr[stack.pop()] = arr[i];
 			}
 			stack.push(i);
-			
 		}
 		
 		while(!stack.empty()) {
-			arr[stack.pop()] = 0;
+			arr[stack.pop()] = -1;
 		}
 		
-		StringBuilder sb = new StringBuilder();
-		for(int i = 0; i < n; i++) {
+		for(int i = 0; i < n ; i++) {
 			sb.append(arr[i]).append(" ");
 		}
 		System.out.println(sb);
-		
-		//6 9 5 7 4   == 0 0 2 2 4
 		
 	}
 }
