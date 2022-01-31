@@ -1,39 +1,44 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Stack;
+import java.util.LinkedList;
+import java.util.StringTokenizer;
 
 public class Main {
+	
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br =new BufferedReader(new InputStreamReader(System.in));
-		String s = br.readLine();
-		String bomb = br.readLine();
-		int bl = bomb.length();
-		Stack<Character> stack = new Stack<Character>();
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		StringBuilder sb = new StringBuilder();
+		LinkedList<Integer> q = new LinkedList<>();
 		
-		for(int i = 0; i < s.length(); i++) {
-			stack.push(s.charAt(i));
-			if(stack.size() >= bl) {
-				boolean flag = false;
-				for(int j = 0; j < bl; j++) {
-					if(stack.get(stack.size()-bl+j) != bomb.charAt(j)){
-						//폭탄문자열과 일치 하지 않다.
-						flag = true;
-						break;
-					}
-				}
-				if(!flag) {
-					for(int j = 0; j < bl; j++) {
-						stack.pop();
-					}
+		int n = Integer.parseInt(st.nextToken()); //트럭의 수 
+		int w = Integer.parseInt(st.nextToken()); //다리의 길이 
+		int l = Integer.parseInt(st.nextToken()); //다리 최대 하중 
+		int[] arr = new int[n];
+		st = new StringTokenizer(br.readLine());
+		for(int i = 0; i< n; i++) {
+			arr[i] = Integer.parseInt(st.nextToken());
+		} // 1 : 2 2 : 4 1 : 2 8
+		int time = 0;
+		int weight = 0;
+		
+		for(int i = 0; i < n ; i++) {
+			while(true) {
+				if(q.isEmpty()) {
+					q.offer(arr[i]); 
+					time ++;
+					weight += arr[i]; break;
+				}else if(q.size() == w) {
+					weight -= q.remove();
+				}else {
+					
 				}
 			}
 		}
-		StringBuilder sb = new StringBuilder();
-		for(Character value : stack) {
-			sb.append(value);
-		}
 		
-		System.out.println(sb.length() == 0 ? "FRULA" : sb);
+		System.out.println(time);
+		
 	}
+	
 }
