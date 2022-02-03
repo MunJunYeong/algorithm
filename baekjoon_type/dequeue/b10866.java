@@ -8,7 +8,6 @@ import java.util.Deque;
 import java.util.StringTokenizer;
 
 public class b10866 {
-	
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br =new BufferedReader(new InputStreamReader(System.in));
 		int n = Integer.parseInt(br.readLine());
@@ -52,29 +51,7 @@ public class b10866 {
 				}else {
 					sb.append(0).append('\n');
 				}
-				break;
-				
-			case "front" :
-				if(!dq.isEmpty()) {
-					sb.append(dq.peekFirst()).append('\n');
-				}else {
-					sb.append(-1).append('\n');
-				}
-				break;
-				
-			case "back" :
-				if(!dq.isEmpty()) {
-					sb.append(dq.peekLast()).append('\n');
-				}else {
-					sb.append(-1).append('\n');
-				}
-				break;
 			}
-			
 		}
-		System.out.println(sb);
-		
 	}
-	
 }
-
