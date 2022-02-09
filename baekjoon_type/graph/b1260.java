@@ -1,3 +1,5 @@
+package graph;
+
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,7 +9,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class Main {
+public class b1260 {
 	static int n; // 정점의 개수 
 	static int m; // 간선의 개수 
 	static int v; // 시작 정점의 번호 
