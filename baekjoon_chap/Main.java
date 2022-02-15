@@ -1,67 +1,85 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.StringTokenizer;
 
+class Dot{
+	int x;
+	int y;
+	public Dot(int x, int y) {
+		this.x= x;
+		this.y = y;
+	}
+}
+
 public class Main {
-
-	static int M, N, K;
-	static int[][] cabbage;
-	static boolean[][] visit;
-	static int count;
-	static int[] dx = { 0, -1, 0, 1 };
-	static int[] dy = { 1, 0, -1, 0 };
-
-	static void dfs(int x, int y) {
-		visit[x][y] = true;
-
-		for (int i = 0; i < 4; i++) {
-			int cx = x + dx[i];
-			int cy = y + dy[i];
-
-			if (cx >= 0 && cy >= 0 && cx < M && cy < N) {
-				if (!visit[cx][cy] && cabbage[cx][cy] == 1) {
-					dfs(cx, cy);
-				}
-			}
-
-		}
-
-	}
-
+	static int N;
+	static int K;
+	
+	static int map[][];
+	
+	static int [] xArr = {-1, 1, 0, 0};
+	static int[] yArr = {0,0, -1, 1};
+	
+	static int check[] = new int[100001];
+	
 	public static void main(String[] args) throws NumberFormatException, IOException {
-
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		int tc = Integer.parseInt(br.readLine());
-
-		for (int i = 0; i < tc; i++) {
-			count = 0;
-			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-			M = Integer.parseInt(st.nextToken());
-			N = Integer.parseInt(st.nextToken());
-			cabbage = new int[M][N];
-			visit = new boolean[M][N];
-
-			K = Integer.parseInt(st.nextToken());
-			for (int j = 0; j < K; j++) {
-				st = new StringTokenizer(br.readLine(), " ");
-				int p1 = Integer.parseInt(st.nextToken());
-				int p2 = Integer.parseInt(st.nextToken());
-				cabbage[p1][p2] = 1;
-			}
-
-			for (int x = 0; x < M; x++) {
-				for (int y = 0; y < N; y++) {
-					if (cabbage[x][y] == 1 && !visit[x][y]) {
-						dfs(x, y);
-						count++;
-					}
-				}
-			}
-
-			System.out.println(count);
+		StringTokenizer st=  new StringTokenizer(br.readLine());
+		
+		N = Integer.parseInt(st.nextToken()); //subin
+		K = Integer.parseInt(st.nextToken()); //sister
+		
+		if(N == K) {
+			System.out.println(0);
+		}else {
+			bfs(N);
 		}
-
+		
+		
 	}
+
+	private static void bfs(int n) {
+		Queue<Integer> q = new LinkedList<Integer>();
+		q.offer(n);
+		check[n] = 1;
+		
+		while(!q.isEmpty()) {
+			int qPoll = q.poll();
+			for(int i = 0; i < 3; i++) {
+				int next;
+				if(i == 0) {
+					next = qPoll+1;
+				}else if(i == 1) {
+					next = qPoll-1;
+				}else {
+					next = qPoll * 2;
+				}
+				
+				if(next == K) {
+					System.out.println(check[qPoll]); return;
+				}
+				if(next >= 0 && next < check.length && check[next] ==0) {
+					q.add(next);
+					check[next] = check[qPoll] +1;
+				}
+				
+				
+			}
+			
+			
+		}
+		
+	}
+
+
+
+
+
+	
+	
+	
 
 }
