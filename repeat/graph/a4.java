@@ -63,17 +63,17 @@ public class a4 {
 	}
 	private static void search(int a, int b) {
 		visit[a][b] = true;
-		Queue<Dot> q = new LinkedList<Dot>();
-		q.offer(new Dot(a, b));
+		Queue<Dot11724> q = new LinkedList<Dot11724>();
+		q.offer(new Dot11724(a, b));
 		
 		while(!q.isEmpty()) {
-			Dot dot = q.poll();
+			Dot11724 dot = q.poll();
 			for(int i = 0; i < 4 ; i ++) {
 				int dx = dot.x + xArr[i];
 				int dy = dot.y + yArr[i];
 				if(dx < M && dy < N && dx >= 0 && dy >= 0) {
 					if(!visit[dx][dy] && map[dx][dy] ==1) {
-						q.offer(new Dot(dx, dy));
+						q.offer(new Dot11724(dx, dy));
 						visit[dx][dy]=  true;
 					}
 				}
