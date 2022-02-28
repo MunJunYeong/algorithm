@@ -1,21 +1,22 @@
+package graph;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
 
-class Dot{
+class Dot10026{
 	int x;
 	int y;
-	public Dot(int x, int y) {
+	public Dot10026(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
 }
 
-public class Main {
+public class b10026 {
 	static int N;
 	static char normal[][];
 	static char abNormal[][];
