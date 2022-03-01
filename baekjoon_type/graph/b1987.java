@@ -1,10 +1,12 @@
+package graph;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 
-public class Main {
+public class b1987 {
 	static int N, M;
 	
 	static int arr[][];
