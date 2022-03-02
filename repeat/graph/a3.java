@@ -1,71 +1,93 @@
 package graph;
 
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
+class Cab {
+	int x;
+	int y;
+	public Cab(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+}
 
 public class a3 {
-	static int vertex;
-	static int edge;
+	static int N, M, K;
+	static int vertex, edge;
 	
-	static int map[][];
-	static boolean visit[];
+	static int arr[][];
+	static boolean visit[][];
+	static int[] xArr = {-1, 1, 0, 0};
+	static int[] yArr = {0, 0, -1, 1};
 	
-	static int [] xArr = {1, -1, 0, 0};
-	static int[] yArr = {0,0, -1, 1};
-	
+	static int res = 0;
 	
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		// N 세로 , M 가로
 		
-		vertex = Integer.parseInt(br.readLine());
-		edge = Integer.parseInt(br.readLine());
-		
-		map = new int[vertex+1][vertex+1];
-		visit = new boolean[vertex+1];
-		
-		for(int i = 0; i < edge ; i++) {
+		int test = Integer.parseInt(br.readLine());
+		while(test -- > 0) {
 			StringTokenizer st = new StringTokenizer(br.readLine());
-			int a=  Integer.parseInt(st.nextToken());
-			int b=  Integer.parseInt(st.nextToken());
-			map[a][b] = 1;
-			map[b][a] = 1;
-		}
-		// no 1. 
-		
-		dfs(1);
-		int cnt = 0;
-		for(int i = 2; i < vertex+1; i++) {
-			if(visit[i]) {
-				cnt ++;
+			M = Integer.parseInt(st.nextToken());
+			N = Integer.parseInt(st.nextToken());
+			K = Integer.parseInt(st.nextToken()); // 배추 개수
+			
+			arr = new int[N][M];
+			visit = new boolean[N][M];
+			
+			for(int i = 0; i < K ; i++) {
+				StringTokenizer st2 = new StringTokenizer(br.readLine());
+				int a= Integer.parseInt(st2.nextToken());
+				int b= Integer.parseInt(st2.nextToken());
+				arr[b][a]  = 1;
+			}
+			int cnt =0;
+			for(int i = 0 ; i < N ; i++) {
+				for(int j = 0 ; j < M ; j++) {
+					if(!visit[i][j] && arr[i][j] == 1 ) {
+						bfs(i, j);
+						cnt++;
+					}
+				}
+			}
+			System.out.println(cnt);
+			for(boolean temp[] : visit) {
+				Arrays.fill(temp, false);
 			}
 		}
-		System.out.println(cnt);
+		
+		
 	}
 
 
-	private static void dfs(int start) {
-		Queue<Integer> q= new LinkedList<Integer>();
-		visit[start]= true;
-		q.offer(start);
-		
+	private static void bfs(int x, int y) {
+		Queue<Cab> q = new LinkedList<Cab>();
+		visit[x][y] = true;
+		q.add(new Cab(x, y));
 		while(!q.isEmpty()) {
-			int temp = q.poll();
-			for(int i = 1; i < vertex+1; i ++) {
-				if(map[temp][i] == 1 && !visit[i]) {
-					q.offer(i);
-					visit[i] = true;
+			Cab d = q.poll();
+			for(int i =0; i < 4; i++) {
+				int dx = d.x + xArr[i];
+				int dy = d.y + yArr[i];
+				if(dx >=0 && dy >= 0 && dx < N && dy < M) {
+					if(!visit[dx][dy] && arr[dx][dy] == 1) {
+						visit[dx][dy] = true;
+						q.add(new Cab(dx, dy));
+					}
 				}
 			}
 		}
 	}
-
-	
-	
-	
-
 }
+
+	
+	
+
