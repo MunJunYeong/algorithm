@@ -69,18 +69,18 @@ public class a3 {
 
 
 	private static void bfs(int x, int y) {
-		Queue<Cab> q = new LinkedList<Cab>();
+		Queue<Cab4> q = new LinkedList<Cab4>();
 		visit[x][y] = true;
-		q.add(new Cab(x, y));
+		q.add(new Cab4(x, y));
 		while(!q.isEmpty()) {
-			Cab d = q.poll();
+			Cab4 d = q.poll();
 			for(int i =0; i < 4; i++) {
 				int dx = d.x + xArr[i];
 				int dy = d.y + yArr[i];
 				if(dx >=0 && dy >= 0 && dx < N && dy < M) {
 					if(!visit[dx][dy] && arr[dx][dy] == 1) {
 						visit[dx][dy] = true;
-						q.add(new Cab(dx, dy));
+						q.add(new Cab4(dx, dy));
 					}
 				}
 			}

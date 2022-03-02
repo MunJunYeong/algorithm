@@ -80,18 +80,18 @@ public class b10026 {
 
 	private static void findAbNormal(int a, int b) {
 		char c= abNormal[a][b];
-		Queue<Dot> q = new LinkedList<Dot>();
+		Queue<Dot10026> q = new LinkedList<Dot10026>();
 		visit2[a][b] = true;
-		q.add(new Dot(a, b));
+		q.add(new Dot10026(a, b));
 		while(!q.isEmpty()) {
-			Dot dot = q.poll();
+			Dot10026 dot = q.poll();
 			for(int i = 0; i < 4; i ++) {
 				int dx=  dot.x + xArr[i];
 				int dy = dot.y + yArr[i];
 				if(dx >= 0 && dy >= 0 && dx < N && dy <N) {
 					if(abNormal[dx][dy] == c && !visit2[dx][dy]) {
 						visit2[dx][dy] = true;
-						q.add(new Dot(dx, dy));
+						q.add(new Dot10026(dx, dy));
 					}
 				}
 			}
@@ -101,18 +101,18 @@ public class b10026 {
 	//dfs
 	private static void findNormal(int a, int b) {
 		char c= normal[a][b];
-		Queue<Dot> q = new LinkedList<Dot>();
+		Queue<Dot10026> q = new LinkedList<Dot10026>();
 		visit[a][b] = true;
-		q.add(new Dot(a, b));
+		q.add(new Dot10026(a, b));
 		while(!q.isEmpty()) {
-			Dot dot = q.poll();
+			Dot10026 dot = q.poll();
 			for(int i = 0; i < 4; i ++) {
 				int dx=  dot.x + xArr[i];
 				int dy = dot.y + yArr[i];
 				if(dx >= 0 && dy >= 0 && dx < N && dy <N) {
 					if(normal[dx][dy] == c && !visit[dx][dy]) {
 						visit[dx][dy] = true;
-						q.add(new Dot(dx, dy));
+						q.add(new Dot10026(dx, dy));
 					}
 				}
 			}

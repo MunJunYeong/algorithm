@@ -1,3 +1,5 @@
+package graph;
+
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,7 +17,7 @@ class Tomato5{
 	}
 }
 
-public class Main {
+public class a5 {
 	static int N, M;
 	static int vertex, edge;
 	
@@ -80,25 +82,6 @@ public class Main {
 		}
 	}
 
-//
-//	private static void bfs(int x, int y) {
-//		Queue<Cab> q = new LinkedList<Cab>();
-//		visit[x][y] = true;
-//		q.add(new Cab(x, y));
-//		while(!q.isEmpty()) {
-//			Cab d = q.poll();
-//			for(int i =0; i < 4; i++) {
-//				int dx = d.x + xArr[i];
-//				int dy = d.y + yArr[i];
-//				if(dx >=0 && dy >= 0 && dx < N && dy < M) {
-//					if(!visit[dx][dy] && arr[dx][dy] == 1) {
-//						visit[dx][dy] = true;
-//						q.add(new Cab(dx, dy));
-//					}
-//				}
-//			}
-//		}
-//	}
 }
 
 	
