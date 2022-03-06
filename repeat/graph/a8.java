@@ -1,3 +1,5 @@
+package graph;
+
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,16 +9,16 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-class Tomato5{
+class virus8{
 	int x;
 	int y ;
-	public Tomato5(int x, int y) {
+	public virus8(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
 }
 
-public class Main {
+public class a8 {
 	static int N, M;
 	static int vertex, edge;
 	

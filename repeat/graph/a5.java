@@ -27,7 +27,7 @@ public class a5 {
 	static int[] yArr = {0, 0, -1, 1};
 	
 	static int res = 0;
-	static Queue<Tomato5> q= new LinkedList<Tomato5>();
+	static Queue<virus8> q= new LinkedList<virus8>();
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		// N 세로 , M 가로
@@ -43,7 +43,7 @@ public class a5 {
 			for(int j = 0; j < M; j++) {
 				arr[i][j] = Integer.parseInt(st2.nextToken());
 				if(arr[i][j] == 1) {
-					q.add(new Tomato5(i, j));
+					q.add(new virus8(i, j));
 					visit[i][j] = true;
 				}
 			}
@@ -66,7 +66,7 @@ public class a5 {
 	}
 	private static void bfs() {
 		while(!q.isEmpty()) {
-			Tomato5 t= q.poll();
+			virus8 t= q.poll();
 			for(int i = 0; i < 4; i++) {
 				int dx = t.x + xArr[i];
 				int dy = t.y + yArr[i];
@@ -74,7 +74,7 @@ public class a5 {
 					if(arr[dx][dy] == 0 && !visit[dx][dy]) {
 						visit[dx][dy] = true;
 						arr[dx][dy] = arr[t.x][t.y] + 1;
-						q.add(new Tomato5(dx, dy));
+						q.add(new virus8(dx, dy));
 						res = Math.max(arr[dx][dy], res);
 					}
 				}
