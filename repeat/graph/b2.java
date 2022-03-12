@@ -1,22 +1,23 @@
+package graph;
+
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-class Tomato5{
+class DotB2{
 	int x;
 	int y ;
-	public Tomato5(int x, int y) {
+	public DotB2(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
 }
 
-public class Main {
+public class b2 {
 	static int N, M;
 	static int vertex, edge;
 	
@@ -28,7 +29,7 @@ public class Main {
 	
 	static int max = Integer.MIN_VALUE;
 	static int res = Integer.MIN_VALUE;
-	static Queue<Tomato5> q= new LinkedList<Tomato5>();
+	static Queue<DotB2> q= new LinkedList<DotB2>();
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
@@ -72,17 +73,17 @@ public class Main {
 	}
 	private static void bfs(int a, int b) {
 		visit[a][b] = true;
-		q.add(new Tomato5(a, b));
+		q.add(new DotB2(a, b));
 		
 		while(!q.isEmpty()) {
-			Tomato5 t = q.poll();
+			DotB2 t = q.poll();
 			for(int i = 0; i < 4; i++) {
 				int dx = t.x+ xArr[i];
 				int dy= t.y + yArr[i];
 				if(dx>=0 && dy >= 0 && dx < N && dy < N) {
 					if(!visit[dx][dy]) {
 						visit[dx][dy] = true;
-						q.add(new Tomato5(dx, dy));
+						q.add(new DotB2(dx, dy));
 					}
 				}
 			}
@@ -93,4 +94,5 @@ public class Main {
 
 	
 	
+
 
