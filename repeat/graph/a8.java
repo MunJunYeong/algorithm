@@ -29,10 +29,10 @@ public class a8 {
 	static int[] yArr = {0, 0, -1, 1};
 	
 	static int res = Integer.MIN_VALUE;
-	static Queue<Tomato5> q= new LinkedList<Tomato5>();
+	static Queue<DotB2> q= new LinkedList<DotB2>();
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		// N ¼¼·Î , M °¡·Î
+		// N ï¿½ï¿½ï¿½ï¿½ , M ï¿½ï¿½ï¿½ï¿½
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		N = Integer.parseInt(st.nextToken());
 		M = Integer.parseInt(st.nextToken());
@@ -40,7 +40,7 @@ public class a8 {
 		arr = new int[N][M];
 		visit = new boolean[N][M];
 		
-		//0Àº ºóÄ­ 1Àº º® 2´Â ¹ÙÀÌ·¯½º
+		//0ï¿½ï¿½ ï¿½ï¿½Ä­ 1ï¿½ï¿½ ï¿½ï¿½ 2ï¿½ï¿½ ï¿½ï¿½ï¿½Ì·ï¿½ï¿½ï¿½
 		for(int i = 0 ; i < N; i++) {
 			st = new StringTokenizer(br.readLine());
 			for(int j = 0; j < M ; j++) {
@@ -72,14 +72,14 @@ public class a8 {
 			for(int j = 0; j < M ; j++) {
 				temp[i][j] = arr[i][j];
 				if(arr[i][j] == 2) {
-					q.add(new Tomato5(i, j));
+					q.add(new DotB2(i, j));
 					visit[i][j]  = true;
 				}
 			}
 		}
 		
 		while(!q.isEmpty()) {
-			Tomato5 t = q.poll();
+			DotB2 t = q.poll();
 			for(int i =0; i < 4; i ++) {
 				int dx = t.x + xArr[i];
 				int dy = t.y + yArr[i];
@@ -87,7 +87,7 @@ public class a8 {
 					if(temp[dx][dy] ==0 && !visit[dx][dy]) {
 						temp[dx][dy] = 2;
 						visit[dx][dy] = true;
-						q.add(new Tomato5(dx, dy));
+						q.add(new DotB2(dx, dy));
 					}
 				}
 			}
