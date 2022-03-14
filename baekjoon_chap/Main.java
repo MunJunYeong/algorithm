@@ -23,71 +23,31 @@ public class Main {
 	static int arr[][];
 	static boolean visit[][] ;
 	
-	static int[] xArr = {-1, 1, 0, 0};
-	static int[] yArr = {0, 0, -1, 1};
+	static int[] xArr = {-1, -2, -2, -1, 1, 2, 2, 1};
+	static int[] yArr = {-2, -1, 1, 2, -2, -1, 1, 2};
 	
-	static int max = Integer.MIN_VALUE;
-	static int res = Integer.MIN_VALUE;
+	static int x1, x2, y1, y2;
+	
 	static Queue<Tomato5> q= new LinkedList<Tomato5>();
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		N = Integer.parseInt(st.nextToken());
+		M = Integer.parseInt(st.nextToken());
 		
-		arr=  new int[N][N];
-		
-		
-		for(int i = 0 ; i < N; i++) {
-			st = new StringTokenizer(br.readLine());
-			for(int j = 0; j < N ; j++) {
-				arr[i][j] = Integer.parseInt(st.nextToken());
-				if(max < arr[i][j]) {
-					max = arr[i][j];
-				}
-			}
-		}
-		while(max-- > 0) {
-			visit = new boolean[N][N];
-			int[][] temp = arr;
-			for(int i = 0 ; i < N; i++) {
-				for(int j = 0; j < N ; j++) {
-					if(temp[i][j] <= max) {
-						visit[i][j] = true;
-					}
-				}
-			}
-			int cnt = 0;
-			for(int i = 0; i < N; i ++) {
-				for(int j = 0; j < N; j++) {
-					if(!visit[i][j]) {
-						bfs(i, j);
-						cnt++;
-					}
-				}
-			}
-			res = Math.max(cnt, res);
-		}
-		System.out.println(res);
-		
-	}
-	private static void bfs(int a, int b) {
-		visit[a][b] = true;
-		q.add(new Tomato5(a, b));
-		
-		while(!q.isEmpty()) {
-			Tomato5 t = q.poll();
-			for(int i = 0; i < 4; i++) {
-				int dx = t.x+ xArr[i];
-				int dy= t.y + yArr[i];
-				if(dx>=0 && dy >= 0 && dx < N && dy < N) {
-					if(!visit[dx][dy]) {
-						visit[dx][dy] = true;
-						q.add(new Tomato5(dx, dy));
-					}
-				}
+		arr = new int[N][M];
+		visit = new boolean[N][M];
+		for(int i = 0; i < N ; i++) {
+			String s = br.readLine();
+			for(int j = 0; j < M; j++) {
+				char c= s.charAt(j);
+				arr[i][j] = c-'0';
 			}
 		}
 		
+		
+		
+		System.out.println(arr[N-1][M-1]);
 	}
 }
 
