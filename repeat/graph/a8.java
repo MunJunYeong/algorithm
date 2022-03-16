@@ -29,7 +29,7 @@ public class a8 {
 	static int[] yArr = {0, 0, -1, 1};
 	
 	static int res = Integer.MIN_VALUE;
-	static Queue<DotB2> q= new LinkedList<DotB2>();
+	static Queue<virus8> q= new LinkedList<virus8>();
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		// N ���� , M ����
@@ -72,14 +72,14 @@ public class a8 {
 			for(int j = 0; j < M ; j++) {
 				temp[i][j] = arr[i][j];
 				if(arr[i][j] == 2) {
-					q.add(new DotB2(i, j));
+					q.add(new virus8(i, j));
 					visit[i][j]  = true;
 				}
 			}
 		}
 		
 		while(!q.isEmpty()) {
-			DotB2 t = q.poll();
+			virus8 t = q.poll();
 			for(int i =0; i < 4; i ++) {
 				int dx = t.x + xArr[i];
 				int dy = t.y + yArr[i];
@@ -87,7 +87,7 @@ public class a8 {
 					if(temp[dx][dy] ==0 && !visit[dx][dy]) {
 						temp[dx][dy] = 2;
 						visit[dx][dy] = true;
-						q.add(new DotB2(dx, dy));
+						q.add(new virus8(dx, dy));
 					}
 				}
 			}
