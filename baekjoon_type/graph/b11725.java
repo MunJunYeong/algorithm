@@ -1,3 +1,5 @@
+package graph;
+
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,16 +9,16 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-class Tomato5{
+class Dot11725{
 	int x;
 	int y ;
-	public Tomato5(int x, int y) {
+	public Dot11725(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
 }
 
-public class Main {
+public class b11725 {
 	static int N, M, K;
 	static int vertex, edge;
 	
@@ -27,11 +29,12 @@ public class Main {
 	static int yA[] = {0, 0, -1, 1};
 	
 	
-	static Queue<Tomato5> q= new LinkedList<Tomato5>();
+	static Queue<Dot11725> q= new LinkedList<Dot11725>();
 	
 	static ArrayList<Integer>[] list;
 	static int[] paraent;
 	
+	@SuppressWarnings("unchecked")
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
@@ -59,15 +62,9 @@ public class Main {
 			}
 		}
 		
-//		for(int i = 2; i < N+1; i++) {
-//			System.out.println(paraent[i]);
-//		}
-		for(int value : list[4]) {
-			System.out.println(value);
+		for(int i = 2; i < N+1; i++) {
+			System.out.println(paraent[i]);
 		}
-		
-//		System.out.println(paraent[2]);
-		
 	}
 
 	private static void dfs(int i) {
