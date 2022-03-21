@@ -1,3 +1,5 @@
+package dp;
+
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -5,7 +7,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 
 
-public class Main {
+public class a2 {
 
 	static int[] dp;
 	static int max = Integer.MAX_VALUE;
