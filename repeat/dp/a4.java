@@ -1,10 +1,12 @@
+package dp;
+
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 
-public class Main {
+public class a4 {
 
 	static Integer[] dp;
 	
@@ -14,31 +16,32 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
 		int n = Integer.parseInt(br.readLine());
-		dp = new Integer[n+2];
-		dp[0] = 0;
-		dp[1] = 1;
-		if(n>1) {
+		while(n-- > 0) {
+			int a = Integer.parseInt(br.readLine());
+			
+			dp = new Integer[11];
+			dp[0] = 0;
+			dp[1] = 1;
 			dp[2] = 2;
+			dp[3] = 4;
+			dp[4] = 7;
+			find(a);
+			System.out.println(dp[a]);
+			
 		}
-		if(n>2) {
-			dp[3] = 3;
-		}
-		if(n>3) {
-			dp[4] = 5;
-		}
-		find(n);
 		
-		System.out.println(dp[n]);
 	}
-	private static int find(int n) {
-		if(dp[n] == null) {
-			dp[n] = (find(n-1) + find(n-2)) % 10007;
+	private static int find(int a) {
+		if(dp[a]==null) {
+			dp[a] = find(a-1)+find(a-2)+find(a-3);
 		}
-		return dp[n];
+		
+		return dp[a];
 		
 	}
 }
 
 	
 	
+
 
