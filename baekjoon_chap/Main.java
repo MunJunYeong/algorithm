@@ -7,23 +7,27 @@ import java.util.StringTokenizer;
 
 public class Main {
 
-	static long[] dp;
-	static int arr[];
-	static int zero;
-	static int one;
+	static int[] dp;
+	static int [][] arr;
+	static int res;
+	static int n;
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		
-		int n = Integer.parseInt(br.readLine());
-		dp = new long[n+1];
-		dp[0] =0;
-		dp[1] = 1;
-		if(n>=2) {
-			for(int i = 2; i < n+1; i++) {
-				dp[i] = dp[i-2] + dp[i-1];
-			}
+		n = Integer.parseInt(br.readLine());
+		arr = new int[n+10][2];
+		for(int i = 0; i < n; i++) {
+			StringTokenizer st = new StringTokenizer(br.readLine());
+			arr[i][0] = Integer.parseInt(st.nextToken());
+			arr[i][1] = Integer.parseInt(st.nextToken());
 		}
-		System.out.println(dp[n]);
+		dp = new int[n+10];
+		res = 0;
+		for(int i =0; i <= n+1; i++) {
+			dp[i]= Math.max(dp[i], res);
+			dp[arr[i][0]+ i]= Math.max(dp[arr[i][0]+1], arr[i][1] + dp[i]);
+			res = Math.max(dp[i], res);
+		}
+		System.out.println(res);
 		
 	}
 }
