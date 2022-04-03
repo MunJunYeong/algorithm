@@ -1,3 +1,5 @@
+package dynamic;
+
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -5,9 +7,9 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 
-public class Main {
+public class b1699 {
 
-	static int[][] dp;
+	static int[] dp;
 	static int [] arr;
 	static int n, k;
 	public static void main(String[] args) throws NumberFormatException, IOException {
@@ -16,23 +18,25 @@ public class Main {
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		
 		n = Integer.parseInt(st.nextToken());
-		k = Integer.parseInt(st.nextToken());
-		// nCk
+
+		dp = new int[n+1];
 		
-		dp = new int[n+1][k+1];
-		
-		System.out.println(findRes(n, k) % 10007);
-		
-	}
-	private static int findRes(int a, int b) {
-		if(dp[a][b] > 0) {
-			return dp[a][b];
-		}
-		if(a == b || b ==0) {
-			return dp[a][b] = 1;
+		for(int i =1; i <=n;i++) {
+			dp[i] = i;
 		}
 		
-		return dp[a][b]= (findRes(a-1, b-1) + findRes(a-1, b)) % 10007 ;
+		for(int i = 1; i <=n; i++) {
+			
+			for(int j =1; j*j <=i; j++) {
+				if(dp[i] > dp[i-(j*j)]+1) {
+					dp[i] = dp[i-(j*j)]+1;
+				}
+			}
+			
+		}
+		
+		
+		System.out.println(dp[n]);
 		
 		
 	}
@@ -40,4 +44,5 @@ public class Main {
 
 	
 	
+
 
