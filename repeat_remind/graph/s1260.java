@@ -1,3 +1,5 @@
+package graph;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -7,7 +9,7 @@ import java.util.Queue;
 import java.util.StringTokenizer;
 
 
-public class Main {
+public class s1260 {
 	
 	static int vertex;
 	static int edge;
@@ -45,6 +47,7 @@ public class Main {
 	}
 
 	private static void bfs(int a) {
+//		System.out.print(a + " ");
 		Queue<Integer> q = new LinkedList<Integer>();
 		visit[a] = true;
 		q.add(a);
