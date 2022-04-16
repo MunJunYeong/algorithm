@@ -1,3 +1,5 @@
+package implementation;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -27,7 +29,7 @@ class Stock {
 	}
 }
 
-public class Main {
+public class b20546 {
 	
 	static int arr[];
 	static int cash;
