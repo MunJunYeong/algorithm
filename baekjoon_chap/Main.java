@@ -1,117 +1,120 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
+import java.util.ArrayList;
+import java.util.Stack;
 
 
 
 
 public class Main {
 	
-	static int n;
-	static int arr[][];
-	static int cnt = 0;
+	static String s;
+	static ArrayList<Stack<Character>> dock;
 	
 	
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
-//		 n = Integer.parseInt(br.readLine());
-		 arr = new int[5][5];
-		 
-		 for(int i = 0 ; i < 5; i ++) {
-			 StringTokenizer st = new StringTokenizer(br.readLine());
-			 for(int j = 0; j < 5; j++) {
-				 arr[i][j] = Integer.parseInt(st.nextToken());
-			 }
-		 }
-		 
-		 int ans[] = new int[25];
-		 int k = 0;
-		 for(int i = 0 ; i < 5; i ++) {
-			 StringTokenizer st = new StringTokenizer(br.readLine());
-			 for(int j = 0; j < 5; j++) {
-				ans[k++] = Integer.parseInt(st.nextToken());
-			 }
-		 }
-		 
-		 
-		 for(int a = 0; a < 25; a++) {
-			 
-			 int temp = ans[a];
-			 for(int i = 0; i < 5; i++) {
-				 for(int j = 0; j < 5; j++) {
-					 if(temp == arr[i][j]) {
-						 arr[i][j] = 0;
-					 }
-				 }
-			 }
-			 
-			 rowCheck(); //열
-			 colCheck(); //행 
-			 leftToRight(); //왼쪽에서 오른쪽 대각선 
-			 rightToLeft();
-			 if(cnt >= 3) {
-				 System.out.println(a+1); break;
-			 }
-			 cnt = 0;
-			 
-		 }
-		 
-	}
-
-	private static void rightToLeft() {
-		int zero = 0;
-		for(int i =0; i < 5; i++) {
-			if(arr[i][4-i] == 0) {
-				zero++;
-			}
+		s = br.readLine();
+		if( (s.length()%5) != 0 ) {
+			System.out.println(-1); System.exit(0);
 		}
-		if(zero == 5) {
-			cnt ++;
-		}
-	}
-
-	private static void leftToRight() {
-		int zero = 0;
-		for(int i =0; i < 5; i ++) {
-			if(arr[i][i] == 0) {
-				zero++;
-			}
-		}
-		if(zero == 5) {
-			cnt ++;
-		}
-	}
-
-	private static void colCheck() {
-		for(int i = 0; i < 5; i++) {
-			int zero = 0;
-			for(int j = 0; j < 5; j++) {
-				if(arr[j][i] == 0) {
-					zero++;
+		
+		dock = new ArrayList<Stack<Character>>();
+		int [] dockCnt = new int[5];
+		
+		for(int i = 0; i < s.length(); i++) {
+			char c = s.charAt(i);
+			
+			switch(c) {
+			case 'q': 
+				dockCnt[0] ++;
+				if(dock.isEmpty()) {
+					dock.add(new Stack<Character>());
+					dock.get(0).add(c);
+				}else if(!findLocation('k', c)) {
+					dock.add(new Stack<Character>());
+					dock.get(dock.size()-1).add(c);
 				}
+				break;
+				
+			case 'u': 
+				dockCnt[1] ++;
+				if(!findLocation('q', c)) {
+					System.out.println(-1);
+					System.exit(0);
+					return;
+				}
+				break;
+				
+			case 'a': 
+				dockCnt[2] ++;
+				if(!findLocation('u', c)) {
+					System.out.println(-1);
+					System.exit(0);
+					return;
+					
+				}
+				break;
+				
+			case 'c': 
+				dockCnt[3] ++;
+				if(!findLocation('a', c)) {
+					System.out.println(-1);
+					System.exit(0);
+					return;
+					
+				}
+				break;
+				
+			case 'k': 
+				dockCnt[4] ++;
+				if(!findLocation('c', c)) {
+					System.out.println(-1);
+					System.exit(0);
+					return;
+					
+				}
+				break;
 			}
-			if(zero == 5) {
-				cnt ++;
+		}
+		int totalDock = 0;
+		int qCnt = dockCnt[0];
+		
+		boolean flag = true;
+		
+		for(int i = 0; i < 5; i ++) {
+			totalDock += dockCnt[i];
+			if(qCnt != dockCnt[i]) {
+				flag = false; break;
+			}
+		}
+		if(totalDock % 5 != 0) {
+			flag = false;
+		}
+		if(flag) {
+			System.out.println(dock.size());
+		}else {
+			System.out.println(-1);
+		}
+	}
+
+
+	private static boolean findLocation(char lascC, char c) {
+		for(int i = 0; i < dock.size();i ++) {
+			if(dock.get(i).peek() == lascC) {
+				dock.get(i).add(c);
+				return true;
 			}
 		}
 		
+		return false;
 	}
 
-	private static void rowCheck() {
-		for(int i = 0; i < 5; i++) {
-			int zero = 0;
-			for(int j = 0; j < 5; j++) {
-				if(arr[i][j] == 0) {
-					zero++;
-				}
-			}
-			if(zero == 5) {
-				cnt ++;
-			}
-		}
-	}
+
+
+
 
 }
 
