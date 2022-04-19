@@ -8,7 +8,7 @@ import java.util.StringTokenizer;
 
 
 
-public class c14467 {
+public class s14467 {
 	
 	static int arr[];
 	static int n;
