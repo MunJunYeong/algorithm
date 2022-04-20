@@ -1,3 +1,5 @@
+package implementation;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -15,7 +17,7 @@ class Student {
 }
 
 
-public class Main {
+public class s1244 {
 	
 	static int n;
 	static int stuNo;
@@ -85,4 +87,5 @@ public class Main {
 
 	
 	
+
 
