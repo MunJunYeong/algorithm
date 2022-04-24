@@ -1,10 +1,12 @@
+package implementation;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 
-public class Main {
+public class s2616 {
 	
 	static int n, k;
 	static int[][] arr;
