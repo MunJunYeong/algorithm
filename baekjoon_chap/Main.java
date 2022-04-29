@@ -1,48 +1,52 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.StringTokenizer;
 
 
 public class Main {
 	
-	static int n, s, e;
-	static int[][] arr;
-	static int[][] train;
+	static char[] s;
+	static boolean [] visit;
+	
+	
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
-		n = Integer.parseInt(br.readLine());
-		int dp [] = new int[367];
-		while(n-- > 0) {
-			StringTokenizer st = new StringTokenizer(br.readLine());
-			s = Integer.parseInt(st.nextToken());
-			e = Integer.parseInt(st.nextToken());
-			for(int i = s; i<=e;i++) {
-				dp[i] ++;
-			}
-		}
+		s = br.readLine().toCharArray();
+		visit = new boolean[s.length];
 		
-		int ans = 0;
-		int height = 0;
-		int width = 0;
-		for(int i = 1; i <367; i++) {
-			if(dp[i] > 0) {
-				height ++;
-				width = Math.max(width, dp[i]);
-			}else {
-				ans += (width*height);
-				width= 0;
-				height = 0;
-				
-			}
-		}
-		System.out.println(ans);
-
+		find(0, s.length);
 		
 		
 	}
+
+
+	private static void find(int start, int len) {
+		int idx = -1;
+		int min = Integer.MAX_VALUE;
+		
+		for(int i = start; i < len; i++) {
+			if(min > s[i] && !visit[i]) {
+				min = s[i];
+				idx = i;
+			}
+		}
+		if(idx != -1) {
+			visit[idx] = true;
+			StringBuilder sb = new StringBuilder();
+			for(int i = 0; i < len; i ++) {
+				if(visit[i]) {
+					sb.append(s[i]);
+				}
+			}
+			System.out.println(sb.toString());
+			
+			find(idx, len);
+			
+			find(start, idx);
+		}
+		
+		
+	}
+
 }
