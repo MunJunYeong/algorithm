@@ -1,9 +1,11 @@
+package implementation;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 
-public class Main {
+public class s16719 {
 	
 	static char[] s;
 	static boolean [] visit;
