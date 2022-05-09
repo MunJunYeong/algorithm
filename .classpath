@@ -9,5 +9,6 @@
 	<classpathentry kind="src" path="baekjoon_chap"/>
 	<classpathentry kind="src" path="repeat"/>
 	<classpathentry kind="src" path="baekjoon_type"/>
+	<classpathentry kind="src" path="repeat_remind"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
