@@ -1,4 +1,4 @@
-package dynamic;
+package dp;
 
 
 import java.io.BufferedReader;
@@ -17,8 +17,8 @@ public class b12865 {
 		
 		StringTokenizer st =new StringTokenizer(br.readLine());
 		
-		n = Integer.parseInt(st.nextToken()); // ë¬¼í’ˆì˜ ìˆ˜ 
-		K = Integer.parseInt(st.nextToken()); // ë²„í‹¸ ìˆ˜ ìˆëŠ” ë¬´ê²Œ 
+		n = Integer.parseInt(st.nextToken()); // ë¬¼í’ˆ?˜ ?ˆ˜ 
+		K = Integer.parseInt(st.nextToken()); // ë²„í‹¸ ?ˆ˜ ?ˆ?Š” ë¬´ê²Œ 
 		
 		arr = new int[n+1][2]; // [0] : weight , [1] : price
 		

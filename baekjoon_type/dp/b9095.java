@@ -1,20 +1,26 @@
-package dynamic;
+package dp;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class b11726 {
-	//down-top
+public class b9095 {
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br =new BufferedReader(new InputStreamReader(System.in));
 		int n = Integer.parseInt(br.readLine());
-		int [] dp = new int[n+2];
+		
+		int [] dp = new int[11];
+		dp[0] = 0;
 		dp[1] = 1;
 		dp[2] = 2;
-		for(int i =3; i <=n; i++) {
-			dp[i] = (dp[i-1]+dp[i-2]) %10007;
+		dp[3] = 4;
+		for(int j = 4; j <=10; j++) {
+			dp[j] = dp[j-1] + dp[j-2] + dp[j-3];
 		}
-		System.out.println(dp[n]);
+		
+		for(int i = 0; i < n; i++) {
+			int temp = Integer.parseInt(br.readLine());
+			System.out.println(dp[temp]);
+		}
 	}
 }
