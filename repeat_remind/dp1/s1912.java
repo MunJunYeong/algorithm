@@ -1,11 +1,12 @@
+package dp1;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 
-public class Main {
+public class s1912 {
 	
 	static int s, n;
 	static int[] dp;
@@ -13,32 +14,25 @@ public class Main {
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
-		n = Integer.parseInt(br.readLine());
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		n = Integer.parseInt(st.nextToken());
 		arr = new int[n];
 		dp = new int[n];
-		StringTokenizer st = new StringTokenizer(br.readLine());
-		for(int i = 0; i < n ; i++) {
+		st = new StringTokenizer(br.readLine());
+		for(int i = 0; i <n; i++) {
 			arr[i] = Integer.parseInt(st.nextToken());
 		}
-		
-		dp[0] = arr[0];
-		for(int i = 1; i <n; i++) {
-			dp[i] = arr[i];
-			for(int j = 0; j < i; j++) {
-				if(arr[i] > arr[j]) {
-					dp[i] = Math.max(dp[j]+arr[i], dp[i]);
-				}
-			}
-			
-		}
 		int max = Integer.MIN_VALUE;
-		for(int i = 0; i < n; i++) {
+		dp[0] = arr[0];
+		max = dp[0];
+		for(int i = 1; i < n;i++) {
+			dp[i] = Math.max(arr[i], dp[i-1]+arr[i]);
 			if(max < dp[i]) {
 				max = dp[i];
 			}
 		}
-		System.out.println(max);
 		
+		System.out.println(max);
 		
 	}
 
