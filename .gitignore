@@ -1,1 +1,6 @@
 /bin
+.metadata
+.setting
+.classpath
+programmers/algorithm/Solution.java
+baekjoon_chap/Main.java
