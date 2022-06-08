@@ -10,5 +10,6 @@
 	<classpathentry kind="src" path="repeat"/>
 	<classpathentry kind="src" path="baekjoon_type"/>
 	<classpathentry kind="src" path="repeat_remind"/>
+	<classpathentry kind="src" path="programmers"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
