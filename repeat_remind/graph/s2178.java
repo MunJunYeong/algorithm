@@ -1,3 +1,5 @@
+package graph;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -5,16 +7,16 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-class Dot {
+class Dot2178 {
 	int x;
 	int y;
-	public Dot(int x, int y) {
+	public Dot2178(int x, int y) {
 		this.x =x;
 		this.y = y;
 	}
 }
 
-public class Main {
+public class s2178 {
 
 	static int[] xArr = {-1, 1, 0, 0};
 	static int[] yArr=  {0, 0, -1, 1};
@@ -45,18 +47,18 @@ public class Main {
 	}
 	
 	private static void bfs(int x, int y) {
-		Queue<Dot> q = new LinkedList<Dot>();
-		q.add(new Dot(x, y));
+		Queue<Dot2178> q = new LinkedList<Dot2178>();
+		q.add(new Dot2178(x, y));
 		visit[x][y] = true;
 		while(!q.isEmpty()) {
-			Dot dot = q.poll();
+			Dot2178 dot = q.poll();
 			for(int i = 0; i < 4; i++) {
 				int dx = xArr[i] + dot.x;
 				int dy= yArr[i] + dot.y;
 				if(dx < n && dy < m && dx >=0 && dy >= 0) {
 					if(!visit[dx][dy] && arr[dx][dy] == 1) {
 						visit[dx][dy] = true;
-						q.add(new Dot(dx, dy));
+						q.add(new Dot2178(dx, dy));
 						arr[dx][dy] = arr[dot.x][dot.y] + 1;
 					}
 				}
